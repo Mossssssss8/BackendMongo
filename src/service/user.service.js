@@ -1,6 +1,6 @@
 const { request } = require("express")
 const UserModel = require("../model/users.schema")
-exports.getUser = async(req) => {
+exports.getUser = async() => {
     const allUser = await UserModel.find()
     return allUser
 }

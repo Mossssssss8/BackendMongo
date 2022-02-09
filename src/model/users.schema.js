@@ -9,11 +9,11 @@ const user = new mongoose.Schema({
         type: String,
     },
     gender: {
-        // required: true,
+        required: true,
         type: String,
     },
     age: {
-        // require: true,
+        require: true,
         type: Number,
     },
     email: {
@@ -21,11 +21,11 @@ const user = new mongoose.Schema({
         type: String,
     },
     Weight: {
-        // require: true,
+        require: true,
         type: String
     },
     Height: {
-        // require: true,
+        require: true,
         type: String
     },
 
