@@ -57,6 +57,22 @@ exports.login = async(req, res) => {
     }
 
 }
+exports.getOneUser = async(req,res) => {
+    try {
+        const inputId = req.params.id;
+        // inputId = "6203f371694711377885f981"
+        const allUser = await UserService.getUser()
+        var user ={};
+        allUser.forEach(u => {
+            if (u._id == inputId) {
+                user = u;
+            }
+        })
+        return res.status(200).json({data:user});
+    } catch (error) {
+        return res.status(500);
+    }
+}
 
 
 //function
