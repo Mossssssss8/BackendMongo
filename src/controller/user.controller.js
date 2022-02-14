@@ -38,15 +38,19 @@ exports.deleteUser = async(req, res) => {
 }
 
 exports.login = async(req, res) => {
-    console.log(req.body)
     try {
-        if (await checkLogin(req.body)) {
-
-            return res.status(200).json(true)
+        var user = await checkLogin(req.body);
+        var Canlogin = false;
+        // ถ้าเข้า Function CheckLogin แล้วมี User จริง ตัวแปร user จะ มีค่าเป็นข้อมูลต่างๆ ของ user นั้น แต่ถ้า ไม่เจอ username และ password ตัวแปร user จะเป็น false
+        console.log(user)
+        if(user != false){
+            Canlogin = true;
+        }
+        if (Canlogin) {
+            return res.status(200).json({data:user})
         } else {
             return res.status(200).json(false)
         }
-
 
     } catch (error) {
         return res.status(500)
@@ -72,16 +76,14 @@ async function checkUsernameAndEmail(user) {
 
 async function checkLogin(user) {
     var allUser = await UserService.getUser()
-    var Canlogin = false
+    var forReturn = false
     allUser.forEach(u => {
-        console.log(`login user.username: ${user.username} == u.username: ${u.username} `)
         if (u.username == user.username || u.email == user.username) {
             if (u.password == user.password) {
-                Canlogin = true
-                return Canlogin
+                forReturn = u
             }
 
         }
     })
-    return Canlogin
+    return forReturn
 }
