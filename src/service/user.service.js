@@ -26,4 +26,3 @@ exports.deleteUser = async(req) => {
 
     return doc
 }
-
