@@ -28,6 +28,9 @@ const user = new mongoose.Schema({
         require: true,
         type: String
     },
+    AllScore:{
+        type: String
+    }
 
 }, { timestamps: true })
 
