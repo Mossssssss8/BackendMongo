@@ -13,9 +13,13 @@ const score = new mongoose.Schema({
     DateTime: {
         type: Date,
     },
+    Seconds:{
+        type: Number
+    },
     Status:{
         type: Boolean
     }
+
 
 }, { timestamps: true })
 

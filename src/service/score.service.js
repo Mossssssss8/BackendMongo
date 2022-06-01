@@ -17,6 +17,7 @@ exports.updateScore = async(req) => {
     req.body.UserId != null ? editScore.UserId = req.body.UserId : "";
     req.body.Score != null ? editScore.Score = req.body.Score : "";
     req.body.DateTime != null ? editScore.DateTime = req.body.DateTime : "";
+    req.body.Seconds != null ? editScore.Seconds = req.body.Seconds : "";
     req.body.Status != null ? editScore.Status = req.body.Status : "";
     
     editScore.save();
