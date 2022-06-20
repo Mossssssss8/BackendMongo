@@ -28,3 +28,5 @@ exports.deleteScore = async(req) => {
     const doc = await scoreModel.deleteOne(result)
     return doc
 }
+
+
