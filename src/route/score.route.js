@@ -8,4 +8,4 @@ router.get("/", ScoreController.getScore)
 router.put("/update/:id", ScoreController.updateScore)
 router.delete("/delete/:id", ScoreController.deleteScore)
 
-module.exports = router
+module.exports = router  
