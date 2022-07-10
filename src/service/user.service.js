@@ -77,3 +77,11 @@ exports.uploadProfile = async (req, res) => {
     console.log("Upload File Finish");
 
 }
+exports.ChangeNewPassword = async(req) => {
+    console.log("ChangeNewPassword");
+    console.log(req)
+    const editUser = await UserModel.findOne({ _id: req._id })
+    editUser.password = req.newpassword;
+    editUser.save();
+    return editUser;
+}

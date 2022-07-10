@@ -97,7 +97,7 @@ exports.GetUserScore = async (req, res) => {
         })
         var ForReturnScore = {
             _id: user._id,
-            username : user.username,
+            username: user.username,
             AllScore: user.AllScore
         }
         return res.status(200).json({ data: ForReturnScore });
@@ -105,10 +105,41 @@ exports.GetUserScore = async (req, res) => {
         return res.status(500);
     }
 }
+exports.ForgotPassword = async (req, res) => {
+    try {
+        console.log(req.body)
+        const allUser = await UserService.getUser()
+        var isSuccess = false;
+        var request = req.body;
+        var user = {
+            _id: '',
+            username:'',
+            newpassword: ''
+        };
+        allUser.forEach(u => {
+            if (u.username == request.username && u.email == request.email) {
+                user._id = u._id;
+                user.username = request.username;
+                user.newpassword = request.newpass;
+                isSuccess = true;
+            }
+        })
+        if (isSuccess) {
+            
+            await UserService.ChangeNewPassword(user);
+            return res.status(200).json({ status: "Success" });
+        } else {
+            return res.status(200).json({ status: "username not found!" });
+        }
+    } catch (error) {
+        return res.status(500);
+    }
+}
+
 exports.uploadProfile = async (req, res) => {
     console.log("Upload File!!!");
     try {
-        await UserService.uploadProfile(req,res);
+        await UserService.uploadProfile(req, res);
         return res.status(200).json({ "Status": "Done" });
     } catch (err) {
         return res.status(500);
