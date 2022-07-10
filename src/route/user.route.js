@@ -10,7 +10,7 @@ router.post("/login/", UserController.login)
 router.get("/get/:id",UserController.getOneUser)
 router.put("/updateScore/:id",UserController.UpdateScore)
 router.get("/getScore/:id",UserController.GetUserScore);
-
+router.post("/uploadProfile/:username",UserController.uploadProfile);
 
 
 module.exports = router

@@ -28,7 +28,10 @@ const user = new mongoose.Schema({
         require: true,
         type: String
     },
-    AllScore:{
+    AllScore: {
+        type: String
+    },
+    ProfilePath: {
         type: String
     }
 

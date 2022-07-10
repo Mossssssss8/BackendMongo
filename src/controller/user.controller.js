@@ -105,6 +105,16 @@ exports.GetUserScore = async (req, res) => {
         return res.status(500);
     }
 }
+exports.uploadProfile = async (req, res) => {
+    console.log("Upload File!!!");
+    try {
+        await UserService.uploadProfile(req,res);
+        return res.status(200).json({ "Status": "Done" });
+    } catch (err) {
+        return res.status(500);
+    }
+
+}
 
 //function
 
@@ -134,4 +144,3 @@ async function checkLogin(user) {
     })
     return forReturn
 }
-
